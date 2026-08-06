@@ -133,6 +133,8 @@ tr:last-child td{border-bottom:none;}
 .legend-dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
 
 .gap-note{font-size:12px;color:var(--amber);background:#f6ad5514;border:1px dashed #f6ad5555;padding:8px 12px;border-radius:8px;margin-top:8px;}
+.gap-note .rule-list{gap:5px;}
+.gap-note .rule-list li{color:inherit;font-size:inherit;}
 
 /* mobile bottom tab bar */
 .tabbar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);padding:6px 4px calc(env(safe-area-inset-bottom) + 6px);z-index:50;}
@@ -334,7 +336,11 @@ body.force-desktop .main{padding-bottom:60px;}
         <div class="card clickable" data-nav="sleep">
           <h4>Sleep Trend</h4>
           <div class="mini-chart-box"><canvas id="miniSleepChart"></canvas></div>
-          <p style="font-size:12px">7-day avg at 71 (up from 64 the prior week). Aug 4&rsquo;s 80 (Good) is the mesocycle best; Aug 6 is close behind at 75 (Fair) after the earliest bedtime of the programme (9:46 PM). Aug 2 remains the permanent no-data gap.</p>
+          <ul class="rule-list" style="font-size:12px">
+            <li>7-day avg at 71, up from 64 the prior week.</li>
+            <li>Aug 4&rsquo;s 80 (Good) is the mesocycle best; Aug 6 is close behind at 75 (Fair) after the earliest bedtime of the programme (9:46 PM).</li>
+            <li>Aug 2 remains the permanent no-data gap.</li>
+          </ul>
           <div class="click-hint">View full sleep trend &rarr;</div>
         </div>
         <div class="card clickable" data-nav="recs">
@@ -353,7 +359,12 @@ body.force-desktop .main{padding-bottom:60px;}
         <div class="card">
           <h4>Acute:Chronic Load Ratio</h4>
           <div class="chart-box" style="height:180px"><canvas id="acuteLoadGauge"></canvas></div>
-          <p style="font-size:12.5px;margin-top:8px">Goal: stay at or above <b>0.9</b>, as close to 1.0 as possible. Dropped to 0.8 this run (from 1.0 yesterday) &mdash; below the floor for the first time this mesocycle. Today&rsquo;s session (Upper Push, swapped in for Thursday) will push it back; Saturday Zone 2 is needed to get the ratio back to 0.9&ndash;1.0 before Monday&rsquo;s new Lower Body session. ATL calculation may not yet include today&rsquo;s session (just synced).</p>
+          <ul class="rule-list" style="margin-top:8px">
+            <li>Goal: stay at or above <b>0.9</b>, as close to 1.0 as possible.</li>
+            <li>Dropped to 0.8 this run (from 1.0 yesterday) &mdash; below the floor for the first time this mesocycle.</li>
+            <li>Today&rsquo;s session (Upper Push, swapped in for Thursday) will push it back; Saturday Zone 2 is needed to get the ratio back to 0.9&ndash;1.0 before Monday&rsquo;s new Lower Body session.</li>
+            <li>ATL calculation may not yet include today&rsquo;s session (just synced).</li>
+          </ul>
         </div>
         <div class="card">
           <h4>Garmin Training Status</h4>
@@ -363,7 +374,11 @@ body.force-desktop .main{padding-bottom:60px;}
             <tr><td>VO&sub2; Max</td><td>50 <span class="tag good">Good</span></td></tr>
             <tr><td>HRV Status</td><td>57ms <span class="tag good">Balanced</span></td></tr>
           </table>
-          <p style="font-size:12.5px;margin-top:8px">Load Focus still calling for more aerobic volume &mdash; this directly mirrors the ATL ratio drop. Saturday&rsquo;s Zone 2 session addresses both. Friday&rsquo;s Upper Pull session will also add to the acute load.</p>
+          <ul class="rule-list" style="margin-top:8px">
+            <li>Load Focus still calling for more aerobic volume &mdash; this directly mirrors the ATL ratio drop.</li>
+            <li>Saturday&rsquo;s Zone 2 session addresses both.</li>
+            <li>Friday&rsquo;s Upper Pull session will also add to the acute load.</li>
+          </ul>
         </div>
       </div>
 
@@ -383,8 +398,19 @@ body.force-desktop .main{padding-bottom:60px;}
         </div>
         <div class="card">
           <h4>Recovery Context</h4>
-          <p style="margin-bottom:8px">Recovery trending well: Aug 6 sleep 75 (Fair, 6h52m) &mdash; the earliest bedtime of the mesocycle at 9:46 PM and the second-best score. HRV overnight 56ms (7-day avg 57ms, Balanced). Body Battery high 78 / low 15 &mdash; solid recharge.</p>
-          <div class="gap-note">ATL ratio at 0.8 &mdash; below the 0.9 floor for the first time. Today&rsquo;s session (just completed &mdash; Upper Push, swapped in for Thursday) will partially restore it. The ratio drop is expected after a lighter day; Saturday Zone 2 is the fix. No overreaching risk &mdash; the concern is undertraining, not burnout.</div>
+          <ul class="rule-list" style="margin-bottom:8px">
+            <li>Recovery trending well: Aug 6 sleep 75 (Fair, 6h52m) &mdash; the earliest bedtime of the mesocycle at 9:46 PM and the second-best score.</li>
+            <li>HRV overnight 56ms (7-day avg 57ms, Balanced).</li>
+            <li>Body Battery high 78 / low 15 &mdash; solid recharge.</li>
+          </ul>
+          <div class="gap-note">
+            <ul class="rule-list" style="gap:5px">
+              <li style="color:inherit;font-size:inherit">ATL ratio at 0.8 &mdash; below the 0.9 floor for the first time.</li>
+              <li style="color:inherit;font-size:inherit">Today&rsquo;s session (just completed &mdash; Upper Push, swapped in for Thursday) will partially restore it.</li>
+              <li style="color:inherit;font-size:inherit">The ratio drop is expected after a lighter day; Saturday Zone 2 is the fix.</li>
+              <li style="color:inherit;font-size:inherit">No overreaching risk &mdash; the concern is undertraining, not burnout.</li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -425,11 +451,20 @@ body.force-desktop .main{padding-bottom:60px;}
       <div class="card" style="margin-bottom:20px">
         <h4>Session Log</h4>
         <table id="trainingTable"></table>
-        <div class="gap-note">Mesocycle week 1 (Jul 28–Aug 3) has closed with 4 of the 5 required session types hit: Upper Push (Jul 28), HIIT + treadmill run (Jul 29, vigorous not Zone 2), Functional Fitness + Core (Jul 30), Upper Pull (Jul 31), an accessory day + Indoor Cycling (Aug 1, vigorous not Zone 2), and — newly reported this run — Lower Body Hypertrophy on Aug 3 (manual report, RPE 7, no matching Garmin activity since the device hasn't synced since Aug 1). Zone 2 Cardio is now the sole session type with zero genuine easy-aerobic volume logged across the whole mesocycle — the clear priority for week 2, which starts today (Aug 4).</div>
+        <div class="gap-note">
+          <ul class="rule-list" style="gap:5px">
+            <li style="color:inherit;font-size:inherit">Mesocycle week 1 (Jul 28–Aug 3) has closed with 4 of the 5 required session types hit: Upper Push (Jul 28), HIIT + treadmill run (Jul 29, vigorous not Zone 2), Functional Fitness + Core (Jul 30), Upper Pull (Jul 31), an accessory day + Indoor Cycling (Aug 1, vigorous not Zone 2), and Lower Body Hypertrophy (Aug 3, manual report, RPE 7, no matching Garmin activity since the device hasn't synced since Aug 1).</li>
+            <li style="color:inherit;font-size:inherit">Zone 2 Cardio is now the sole session type with zero genuine easy-aerobic volume logged across the whole mesocycle — the clear priority for week 2, which starts today (Aug 4).</li>
+          </ul>
+        </div>
       </div>
       <div class="card">
         <h4>Session PDF Cross-Reference</h4>
-        <p style="margin-bottom:10px">The filled session-log PDF is checked against the matching Garmin activity every run. It supplies weight/RIR (which Garmin never captures) and its own exercise names/session notes/cardio-spacing self-report, cross-checked against Garmin's objective HR/duration/sleep data. Aug 3's Lower Body session was reported directly in chat (no PDF) with no matching Garmin activity at all — included below alongside Wednesday's, Thursday's and Friday's PDFs.</p>
+        <ul class="rule-list" style="margin-bottom:10px">
+          <li>The filled session-log PDF is checked against the matching Garmin activity every run.</li>
+          <li>It supplies weight/RIR (which Garmin never captures) and its own exercise names/session notes/cardio-spacing self-report, cross-checked against Garmin's objective HR/duration/sleep data.</li>
+          <li>Aug 3's Lower Body session was reported directly in chat (no PDF) with no matching Garmin activity at all — included below alongside Wednesday's, Thursday's and Friday's PDFs.</li>
+        </ul>
         <table id="pdfCrossRefTable"></table>
       </div>
     </div>
@@ -455,7 +490,10 @@ body.force-desktop .main{padding-bottom:60px;}
       </div>
       <div class="card">
         <h4>Coverage Read</h4>
-        <p>Chest, lats and traps still dominate the Garmin-sensor totals below — Friday's Upper Pull session added volume on top of Thursday's Functional Fitness + Core work (which put quads, hamstrings, glutes and core on the board via Farmer's Carry, Goblet Squat, Dead Bug). <b style="color:var(--warn)">Aug 3's Lower Body Hypertrophy session (Squat, RDL, Leg Press, Leg Curl, Leg Extension, Calf Raise) isn't reflected here at all</b> — it has no matching Garmin activity (device sync gap), so true quad/hamstring/glute/calf volume this mesocycle is meaningfully higher than these Garmin-only totals show.</p>
+        <ul class="rule-list">
+          <li>Chest, lats and traps still dominate the Garmin-sensor totals below — Friday's Upper Pull session added volume on top of Thursday's Functional Fitness + Core work (which put quads, hamstrings, glutes and core on the board via Farmer's Carry, Goblet Squat, Dead Bug).</li>
+          <li><b style="color:var(--warn)">Aug 3's Lower Body Hypertrophy session (Squat, RDL, Leg Press, Leg Curl, Leg Extension, Calf Raise) isn't reflected here at all</b> — it has no matching Garmin activity (device sync gap), so true quad/hamstring/glute/calf volume this mesocycle is meaningfully higher than these Garmin-only totals show.</li>
+        </ul>
       </div>
     </div>
 
@@ -498,7 +536,10 @@ body.force-desktop .main{padding-bottom:60px;}
       </ul>
 
       <div class="section-title"><span class="bar"></span>Upcoming Programme Change — Monday, effective 10 Aug 2026</div>
-      <p style="margin-bottom:10px">Confirmed this run, driven by the user's own feedback after Aug 3's session ("felt good and strong, I would like have more explosive and strength work in there") — goal is rugby performance and general athleticism. Not yet applied to any session logged so far; the redesign below takes effect from next Monday.</p>
+      <ul class="rule-list" style="margin-bottom:10px">
+        <li>Confirmed this run, driven by the user's own feedback after Aug 3's session ("felt good and strong, I would like have more explosive and strength work in there") — goal is rugby performance and general athleticism.</li>
+        <li>Not yet applied to any session logged so far; the redesign below takes effect from next Monday.</li>
+      </ul>
       <ul class="rule-list">
         <li><b>Block 1 — Power Primer:</b> Box Jump 4×4, max height/intent, full reset between reps (90s rest)</li>
         <li><b>Block 2 — Strength-Power (contrast pairing):</b> Barbell Back Squat 4×6 @ ~80-85%, each set immediately followed by 3 Jump Squats at bodyweight</li>
@@ -509,7 +550,10 @@ body.force-desktop .main{padding-bottom:60px;}
       </ul>
 
       <div class="section-title"><span class="bar"></span>Programme Change Already Applied — Thursday</div>
-      <p>Copenhagen Plank and Jefferson Curl have been removed from Functional Fitness + Core (user dislikes both) and replaced with Pallof Press (3×10/side, anti-rotation core) and Ab Wheel Rollout (3×8, anti-extension core). Applied from Jul 30 onward; neither replacement has a session datapoint yet since Thursday hasn't recurred.</p>
+      <ul class="rule-list">
+        <li>Copenhagen Plank and Jefferson Curl have been removed from Functional Fitness + Core (user dislikes both) and replaced with Pallof Press (3×10/side, anti-rotation core) and Ab Wheel Rollout (3×8, anti-extension core).</li>
+        <li>Applied from Jul 30 onward; neither replacement has a session datapoint yet since Thursday hasn't recurred.</li>
+      </ul>
     </div>
 
     <!-- OVERLOAD -->
@@ -525,7 +569,14 @@ body.force-desktop .main{padding-bottom:60px;}
 
     <!-- RECOMMENDATIONS -->
     <div class="page" id="page-recs">
-      <div class="topbar"><div><h1>Recommendations & Adherence</h1><p class="sub">Updated this run: #2 and #13 flip to adhered (Aug 3 Lower Body session resolves the week-1 gap), #20/#22 move to partial/adhered, #3/#5/#10/#11/#14/#17 remain not-adhered (Zone 2 Cardio and the Jul 26 mystery still open), #23/#24/#25 sit unconfirmed pending a Garmin sync. Six new recs added (Garmin sync, Forms re-login, the confirmed Monday redesign, next-Monday overload targets, week 2's Zone 2 priority, and nutrition logging consistency).</p></div></div>
+      <div class="topbar"><div><h1>Recommendations & Adherence</h1><p class="sub">Updated this run — see summary below</p></div></div>
+      <ul class="rule-list" style="margin-bottom:18px">
+        <li>#2 and #13 flip to adhered (Aug 3 Lower Body session resolves the week-1 gap).</li>
+        <li>#20/#22 move to partial/adhered.</li>
+        <li>#3/#5/#10/#11/#14/#17 remain not-adhered (Zone 2 Cardio and the Jul 26 mystery still open).</li>
+        <li>#23/#24/#25 sit unconfirmed pending a Garmin sync.</li>
+        <li>Six new recs added: Garmin sync, Forms re-login, the confirmed Monday redesign, next-Monday overload targets, week 2's Zone 2 priority, and nutrition logging consistency.</li>
+      </ul>
       <div id="recsList"></div>
     </div>
 
@@ -3201,6 +3252,14 @@ if(!chartsAvailable){
   Chart.defaults.borderColor = '#242c39';
 }
 function safe(fn){ try{ fn(); } catch(e){ console.error(e); } }
+// Turns a long free-text note into a bulleted rule-list (splits on sentence boundaries).
+// Falls back to a single bullet if the text is short or has no clear sentence breaks.
+function bulletize(text){
+  if(!text) return '';
+  const sentences = text.split(/(?<=[.!?])\s+(?=[A-Z0-9(])/).map(s=>s.trim()).filter(Boolean);
+  if(sentences.length<=1) return `<ul class="rule-list"><li>${text}</li></ul>`;
+  return `<ul class="rule-list">${sentences.map(s=>`<li>${s}</li>`).join('')}</ul>`;
+}
 
 // ---- Mesocycle Dial ----
 safe(function(){
@@ -3278,9 +3337,9 @@ safe(function(){
   const xref = DATA.training.pdfCrossRef;
   const sleepPhrase = sleepDelta===0 ? `held flat at ${cur.avgScore}` : (sleepDelta>0?'climbed':'dropped')+` ${Math.abs(sleepDelta)} points (${pri.avgScore} → ${cur.avgScore})`;
   const stressPhrase = stressDelta===0 ? `held flat at ${curS.avg}` : (stressDelta<=0?'came down':'went up')+` ${Math.abs(stressDelta)} points (${priS.avg} → ${curS.avg})`;
-  let html = `<p>Sleep score ${sleepPhrase} week over week, stress ${stressPhrase}, and HRV status reads <b>${hrv.status}</b> at ${hrv.overnightAvg}ms overnight. Steady recovery numbers — the limiting factor right now is training consistency, not readiness.</p>`;
+  let html = `<ul class="rule-list"><li>Sleep score ${sleepPhrase} week over week, stress ${stressPhrase}, and HRV status reads <b>${hrv.status}</b> at ${hrv.overnightAvg}ms overnight.</li><li>Steady recovery numbers — the limiting factor right now is training consistency, not readiness.</li></ul>`;
   if(xref && xref.matches && xref.matches.length){
-    html += `<p style="margin-top:10px">You logged every set, every rep, every RIR on Wednesday — no guessing, no rounding up. That's the standard. Nobody's grading how hard the session felt; they're grading whether you wrote down the truth. Do that every session and the plan can actually work for you.</p>`;
+    html += `<ul class="rule-list" style="margin-top:10px"><li>You logged every set, every rep, every RIR on Wednesday — no guessing, no rounding up. That's the standard.</li><li>Nobody's grading how hard the session felt; they're grading whether you wrote down the truth. Do that every session and the plan can actually work for you.</li></ul>`;
   }
   document.getElementById('winsCardBody').innerHTML = html;
 });
@@ -3415,7 +3474,7 @@ safe(function(){
 
 // ---- Overload note ----
 safe(function(){
-  document.getElementById('overloadNote').textContent = DATA.overload.note;
+  document.getElementById('overloadNote').innerHTML = bulletize(DATA.overload.note);
 });
 
 // ---- Overload chart (working weight by exercise, last set of each) ----
@@ -3524,12 +3583,12 @@ safe(function(){
   }
 
   const noteEl = document.getElementById('nutNote');
-  if(noteEl) noteEl.innerHTML = `<p>${n.note}</p>`;
+  if(noteEl) noteEl.innerHTML = bulletize(n.note);
 
   const rationaleEl = document.getElementById('nutRationale');
   if(rationaleEl && n.targetRationale){
     const bw = n.bodyweightKg ? `${n.bodyweightKg}kg` : '';
-    rationaleEl.innerHTML = `<p style="margin-bottom:8px"><span class="tag violet">${n.goalPhase||''}</span> ${bw?('· bodyweight '+bw):''}</p><p>${n.targetRationale}</p>`;
+    rationaleEl.innerHTML = `<p style="margin-bottom:8px"><span class="tag violet">${n.goalPhase||''}</span> ${bw?('· bodyweight '+bw):''}</p>` + bulletize(n.targetRationale);
   }
 });
 
@@ -3539,7 +3598,7 @@ safe(function(){
   if(!w) return;
 
   const noteEl = document.getElementById('nutWorkOnsNote');
-  if(noteEl) noteEl.innerHTML = `<p>${w.note}</p>`;
+  if(noteEl) noteEl.innerHTML = bulletize(w.note);
 
   const listEl = document.getElementById('nutWorkOnsList');
   if(listEl && w.observations){
@@ -3567,7 +3626,7 @@ safe(function(){
       `;
     }
     const fvNoteEl = document.getElementById('nutFruitVegNote');
-    if(fvNoteEl) fvNoteEl.innerHTML = `<p>${fv.note}</p>`;
+    if(fvNoteEl) fvNoteEl.innerHTML = bulletize(fv.note);
   }
 
   const swapsTbl = document.getElementById('nutSwapsTable');
@@ -3627,14 +3686,16 @@ safe(function(){
   }
 
   const dateNote = document.getElementById('varsDateNote');
-  if(dateNote){ dateNote.textContent = v.note; }
+  if(dateNote){ dateNote.innerHTML = bulletize(v.note); }
 
   const readout = document.getElementById('varsReadout');
   if(readout){
-    let html = `<p>Only ${v.totalResponses} nights logged so far, so nothing here is a trend yet — a pattern worth watching, not a conclusion. `;
-    html += `Every night so far reports a screen in bed before sleep and no relaxation technique used, and ${hotRoomCount} of ${nights.length} nights rate the bedroom "too hot" — if short-sleep or lower-quality nights keep recurring, these three are the first things to change since they're consistent across every response.</p>`;
-    if(alcoholCount>0){ html += `<p style="margin-top:10px">Alcohol was reported on ${alcoholCount} of ${nights.length} nights — worth keeping an eye on whether those correlate with lower sleep scores once more nights are logged.</p>`; }
-    html += `<p style="margin-top:10px">Keep filling this out nightly — once there are enough responses with confirmed dates, this can be cross-referenced directly against the Sleep Trend and Recovery Context data instead of sitting as a standalone log.</p>`;
+    let html = `<ul class="rule-list">`;
+    html += `<li>Only ${v.totalResponses} nights logged so far, so nothing here is a trend yet — a pattern worth watching, not a conclusion.</li>`;
+    html += `<li>Every night so far reports a screen in bed before sleep and no relaxation technique used, and ${hotRoomCount} of ${nights.length} nights rate the bedroom "too hot" — if short-sleep or lower-quality nights keep recurring, these three are the first things to change since they're consistent across every response.</li>`;
+    if(alcoholCount>0){ html += `<li>Alcohol was reported on ${alcoholCount} of ${nights.length} nights — worth keeping an eye on whether those correlate with lower sleep scores once more nights are logged.</li>`; }
+    html += `<li>Keep filling this out nightly — once there are enough responses with confirmed dates, this can be cross-referenced directly against the Sleep Trend and Recovery Context data instead of sitting as a standalone log.</li>`;
+    html += `</ul>`;
     readout.innerHTML = html;
   }
 });
