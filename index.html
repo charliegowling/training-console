@@ -33,7 +33,7 @@
   --font-head:'Space Grotesk',sans-serif; --font-body:'Inter',sans-serif; --font-mono:'JetBrains Mono',monospace;
 }
 *{box-sizing:border-box;}
-body{margin:0;background:radial-gradient(1200px 800px at 10% -10%, #14202180 0%, transparent 60%), var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;}
+body{margin:0;background:radial-gradient(1200px 800px at 10% -10%, #14202180 0%, transparent 60%), var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;}
 h1,h2,h3,h4{font-family:var(--font-head);margin:0 0 4px 0;font-weight:600;}
 p{margin:0;color:var(--text-dim);}
 .mono{font-family:var(--font-mono);}
@@ -90,10 +90,15 @@ p{margin:0;color:var(--text-dim);}
 .flag-row{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:10px;background:var(--panel);border:1px solid var(--border);font-size:13px;}
 .flag-row .icon{font-size:15px;}
 
-table{width:100%;border-collapse:collapse;font-size:13px;}
-th{text-align:left;color:var(--text-faint);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:8px 10px;border-bottom:1px solid var(--border);}
-td{padding:9px 10px;border-bottom:1px solid #1e2530;color:var(--text);}
+table{width:100%;min-width:480px;border-collapse:collapse;font-size:13px;}
+th{text-align:left;color:var(--text-faint);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:8px 10px;border-bottom:1px solid var(--border);white-space:nowrap;}
+td{padding:9px 10px;border-bottom:1px solid #1e2530;color:var(--text);white-space:nowrap;}
 tr:last-child td{border-bottom:none;}
+#varsTable{min-width:920px;}
+#pdfCrossRefTable{min-width:760px;}
+#nutTable{min-width:640px;}
+/* any card or expandable session body holding a table scrolls internally instead of pushing the page wide */
+.card,.session-body{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .chart-box{position:relative;height:280px;}
 .chart-box.tall{height:340px;}
 .section-title{margin:30px 0 14px;font-size:15px;color:var(--text);display:flex;align-items:center;gap:8px;}
@@ -163,6 +168,61 @@ body.force-desktop .main{padding-bottom:60px;}
 }
 @media (min-width:881px){
   body.auto-layout .tabbar{display:none;}
+}
+
+/* ---- Compact mobile mode: tighter spacing everywhere, nothing removed, ----
+   ---- just denser so all the same stats fit without pushing the page wide. ---- */
+@media (max-width:880px){
+  body.auto-layout .main,
+  body.force-mobile .main{padding:14px 12px 90px;}
+  body.auto-layout .card,
+  body.force-mobile .card{padding:13px 14px;border-radius:12px;}
+  body.auto-layout .kpi-val,
+  body.force-mobile .kpi-val{font-size:22px;}
+  body.auto-layout .card h4,
+  body.force-mobile .card h4{font-size:10.5px;margin-bottom:7px;}
+  body.auto-layout .kpi-sub,
+  body.force-mobile .kpi-sub{font-size:11px;}
+  body.auto-layout .grid,
+  body.force-mobile .grid{gap:10px;}
+  body.auto-layout .hero,
+  body.force-mobile .hero{padding:16px;gap:14px;border-radius:14px;}
+  body.auto-layout .hero-today,
+  body.force-mobile .hero-today{gap:8px;}
+  body.auto-layout .hero-today .badge,
+  body.force-mobile .hero-today .badge{padding:5px 10px;font-size:12.5px;}
+  body.auto-layout .flags,
+  body.force-mobile .flags{gap:6px;}
+  body.auto-layout .flag-row,
+  body.force-mobile .flag-row{padding:8px 10px;font-size:12px;}
+  body.auto-layout .rule-list,
+  body.force-mobile .rule-list{gap:6px;}
+  body.auto-layout .rule-list li,
+  body.force-mobile .rule-list li{font-size:12px;}
+  body.auto-layout .section-title,
+  body.force-mobile .section-title{margin:22px 0 10px;font-size:13.5px;}
+  body.auto-layout .chart-box,
+  body.force-mobile .chart-box{height:210px;}
+  body.auto-layout .chart-box.tall,
+  body.force-mobile .chart-box.tall{height:250px;}
+  body.auto-layout table,
+  body.force-mobile table{font-size:12px;}
+  body.auto-layout th,
+  body.force-mobile th{padding:7px 8px;font-size:10px;}
+  body.auto-layout td,
+  body.force-mobile td{padding:8px;}
+  body.auto-layout .session-quickstats,
+  body.force-mobile .session-quickstats{flex-wrap:wrap;row-gap:4px;gap:10px;}
+  body.auto-layout .rec-card,
+  body.force-mobile .rec-card{padding:13px 14px;}
+  body.auto-layout .rec-card .rec-top,
+  body.force-mobile .rec-card .rec-top{flex-wrap:wrap;}
+  body.auto-layout .mini-chart-box,
+  body.force-mobile .mini-chart-box{height:64px;}
+  body.auto-layout .dial-wrap canvas,
+  body.force-mobile .dial-wrap canvas{width:150px;height:150px;}
+  body.auto-layout .topbar h1,
+  body.force-mobile .topbar h1{font-size:20px;}
 }
 
 .reload-hint{color:var(--text-faint);font-size:11.5px;}
