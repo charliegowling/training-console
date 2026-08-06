@@ -122,6 +122,16 @@ p{margin:0;color:var(--text-dim);}
 .hero .rule-list li b{color:#fff;opacity:1;}
 .hero .rule-list li:before{background:linear-gradient(135deg,#a78bfa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent;}
 
+.hero .hero-kpis{grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin:2px 0;}
+.hero .hero-kpis .card{
+  background:rgba(255,255,255,0.07);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.14);border-radius:14px;padding:11px 13px;
+}
+.hero .hero-kpis h4{color:#fff;opacity:.55;font-size:9.5px;margin-bottom:6px;}
+.hero .hero-kpis .kpi-val{font-size:21px;}
+.hero .hero-kpis .kpi-sub{color:#e7e6f5;opacity:.75;font-size:10px;}
+.hero .hero-kpis .card.clickable:hover{border-color:rgba(167,139,250,.6);transform:translateY(-2px);}
+
 .flags{display:flex;flex-direction:column;gap:6px;margin-top:4px;}
 .flag-row{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:10px;background:var(--panel);border:1px solid var(--border);font-size:13px;}
 .flag-row .icon{font-size:15px;}
@@ -361,6 +371,13 @@ body.force-desktop .main{padding-bottom:60px;}
             <span class="tag warn">Upper Push swapped in for Thursday</span>
             <span class="tag warn">ATL ratio 0.8 &mdash; below 0.9 floor</span>
           </div>
+          <div class="grid g5 hero-kpis">
+            <div class="card"><h4>Avg Sleep Score (7d)</h4><div class="kpi-val" style="color:var(--good)">71</div><div class="kpi-sub">up from 64 prior week <span class="tag good">&uarr; 7</span></div></div>
+            <div class="card"><h4>Avg Stress (7d)</h4><div class="kpi-val" style="color:var(--teal)">41</div><div class="kpi-sub">down from 50 prior week <span class="tag good">&darr; 9</span></div></div>
+            <div class="card"><h4>HRV Status</h4><div class="kpi-val" style="color:var(--teal)">Balanced</div><div class="kpi-sub">56ms overnight &middot; 57ms 7-day avg</div></div>
+            <div class="card clickable" data-nav="training"><h4>Acute Training Load</h4><div class="kpi-val" style="color:var(--warn)">0.8</div><div class="kpi-sub">196 raw &middot; <span class="tag warn">Below 0.9 floor</span> &middot; goal &ge;0.9</div></div>
+            <div class="card clickable" data-nav="nutrition"><h4>Protein Today</h4><div class="kpi-val" style="color:var(--muted)">0g</div><div class="kpi-sub">Aug 6 not logged yet (early morning)</div></div>
+          </div>
           <ul class="rule-list" style="margin-bottom:4px">
             <li><b>Session swap, corrected:</b> today's 54:01 Garmin strength session (19 sets, 110 bpm avg HR, 308 cal) is <b>Upper Push</b>, not Functional Fitness + Core &mdash; confirmed by chat. A prior pass had wrongly guessed Functional+Core purely from the calendar day; Thursday Functional+Core is still outstanding for this week. Full exercise/weight data pending your session-log PDF.</li>
             <li><b>ATL ratio dropped to 0.8</b> &mdash; raw load fell from 226 to 196, crossing below the user&rsquo;s 0.9 floor for the first time this mesocycle. Today&rsquo;s session will push it back up, but Saturday Zone 2 (Aug 8) is now essential to get it back to 0.9&ndash;1.0 before Monday&rsquo;s new Lower Body structure.</li>
@@ -370,24 +387,8 @@ body.force-desktop .main{padding-bottom:60px;}
             <li><b>Wednesday Aug 5 PDF confirmed</b> &mdash; all SKILL.md-logged data verified. Garmin date-lagged the Upper Push to Aug 4 (50:31, 20 sets, 107 avg HR) &mdash; matched correctly.</li>
             <li><b>Microsoft Forms still failing</b> &mdash; 4th consecutive run with &ldquo;please sign in again&rdquo; error. 5 responses on file, unchanged.</li>
           </ul>
-          <div class="flags">
-            <div class="flag-row"><span class="icon">&#x1F7E5;</span><div><b>ATL ratio at 0.8 &mdash; below the 0.9 user floor.</b> Dropped from 1.0 to 0.8 since yesterday&rsquo;s run. Today&rsquo;s session (Upper Push, swapped in for Thursday) will partially restore it; Saturday Zone 2 (Aug 8) is the critical session to get the ratio back to 0.9&ndash;1.0 before Monday&rsquo;s first new-structure Lower Body session. HR cap: 130 bpm, 45&ndash;60 min easy pace.</div></div>
-            <div class="flag-row"><span class="icon">&#x1F7E7;</span><div><b>Today's session was Upper Push, not Functional+Core.</b> You did Wednesday's Upper Push routine again instead of Thursday's Functional Fitness + Core (day swap). 54:01 Garmin-confirmed for duration/HR/calories; exercise/weight detail will be filled in once your session-log PDF arrives.</div></div>
-            <div class="flag-row"><span class="icon">&#x1F7E7;</span><div><b>Thursday Functional+Core is now the outstanding gap for week 2.</b> Not done yet this week &mdash; needs to land on another day before the week closes (Farmer's Carry, Landmine Press SA, Landmine Anti-Rotation, KB Goblet Squat, Dead Bug, Pallof Press, Ab Wheel Rollout).</div></div>
-            <div class="flag-row"><span class="icon">&#x1F7E8;</span><div><b>High Aerobic Shortage load focus persists.</b> Garmin is still signalling insufficient aerobic volume. Saturday Zone 2 addresses this directly &mdash; two Zone 2 sessions (Zone 2 #1: Aug 5 cycle; Zone 2 #2: Sat Aug 8) is the weekly target. Missing Saturday means only 1 of 2 Zone 2 sessions for week 2.</div></div>
-            <div class="flag-row"><span class="icon">&#x1F7E8;</span><div><b>Microsoft Forms still not authenticated</b> &mdash; 4th consecutive failure. No pre-sleep variable data available. Re-authenticate at forms.cloud.microsoft in your browser before the next run.</div></div>
-          </div>
         </div>
         <div class="next-session" id="nextSessionCard"></div>
-      </div>
-
-      <div class="section-title"><span class="bar"></span>Where You Stand</div>
-      <div class="grid g5">
-        <div class="card"><h4>Avg Sleep Score (7d)</h4><div class="kpi-val" style="color:var(--good)">71</div><div class="kpi-sub">up from 64 prior week <span class="tag good">&uarr; 7</span></div></div>
-        <div class="card"><h4>Avg Stress (7d)</h4><div class="kpi-val" style="color:var(--teal)">41</div><div class="kpi-sub">down from 50 prior week <span class="tag good">&darr; 9</span></div></div>
-        <div class="card"><h4>HRV Status</h4><div class="kpi-val" style="color:var(--teal)">Balanced</div><div class="kpi-sub">56ms overnight &middot; 57ms 7-day avg</div></div>
-        <div class="card clickable" data-nav="training"><h4>Acute Training Load</h4><div class="kpi-val" style="color:var(--warn)">0.8</div><div class="kpi-sub">196 raw &middot; <span class="tag warn">Below 0.9 floor</span> &middot; goal &ge;0.9</div></div>
-        <div class="card clickable" data-nav="nutrition"><h4>Protein Today</h4><div class="kpi-val" style="color:var(--muted)">0g</div><div class="kpi-sub">Aug 6 not logged yet (early morning)</div></div>
       </div>
 
       <div class="section-title"><span class="bar"></span>This Week, At A Glance</div>
