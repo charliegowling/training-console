@@ -82,10 +82,10 @@ p{margin:0;color:var(--text-dim);}
 .hero{
   position:relative;
   overflow:hidden;
-  display:grid;grid-template-columns:260px 1fr;gap:24px;
+  display:grid;grid-template-columns:230px 1fr 300px;gap:20px;
   background:radial-gradient(120% 140% at 12% 8%, #1a1035 0%, #05030f 55%), #05030f;
   border:1px solid rgba(255,255,255,0.08);
-  border-radius:18px;padding:26px;margin-bottom:20px;
+  border-radius:18px;padding:24px;margin-bottom:20px;
   isolation:isolate;
 }
 .hero::before,.hero::after{
@@ -105,31 +105,48 @@ p{margin:0;color:var(--text-dim);}
 .dial-week{font-family:var(--font-head);font-size:14px;color:#fff;opacity:.92;text-align:center;}
 #mesoDial{filter:drop-shadow(0 0 14px rgba(124,58,237,.65)) drop-shadow(0 0 26px rgba(6,182,212,.25));}
 
-.hero-right{display:flex;flex-direction:column;justify-content:center;gap:12px;}
-.hero-today{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.hero-right{display:flex;flex-direction:column;justify-content:center;gap:9px;min-width:0;}
+.hero-today{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
 .hero-today .badge{
   background:rgba(255,255,255,0.08);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.18);color:#fff;padding:6px 14px;border-radius:14px;
-  font-family:var(--font-head);font-weight:600;font-size:14px;
+  border:1px solid rgba(255,255,255,0.18);color:#fff;padding:5px 12px;border-radius:14px;
+  font-family:var(--font-head);font-weight:600;font-size:13px;
   box-shadow:0 0 22px rgba(124,58,237,.18);
 }
 .hero .tag{
   background:rgba(255,255,255,0.08);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
   border:1px solid rgba(255,255,255,0.18);
 }
-.hero .rule-list li{color:#e7e6f5;opacity:.85;}
+.hero .rule-list{gap:5px;}
+.hero .rule-list li{color:#e7e6f5;opacity:.85;font-size:12px;line-height:1.4;padding-left:16px;}
 .hero .rule-list li b{color:#fff;opacity:1;}
 .hero .rule-list li:before{background:linear-gradient(135deg,#a78bfa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent;}
 
-.flags{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
+.flags{display:flex;flex-direction:column;gap:6px;margin-top:4px;}
 .flag-row{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:10px;background:var(--panel);border:1px solid var(--border);font-size:13px;}
 .flag-row .icon{font-size:15px;}
 .hero .flag-row{
   background:rgba(255,255,255,0.07);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
-  border:1px solid rgba(255,255,255,0.14);color:#f2f1fb;
+  border:1px solid rgba(255,255,255,0.14);color:#f2f1fb;padding:8px 10px;font-size:12px;
 }
 .hero .flag-row div{color:#f2f1fb;}
 .hero .flag-row b{color:#fff;}
+
+/* Next Session panel — third hero column */
+.next-session{
+  display:flex;flex-direction:column;gap:10px;min-width:0;
+  background:rgba(255,255,255,0.07);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.16);border-radius:18px;padding:16px 16px;
+  box-shadow:0 0 30px rgba(6,182,212,.10);
+}
+.next-session h4{font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:#fff;opacity:.6;margin:0;}
+.next-session .ns-type{font-family:var(--font-head);font-size:19px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.next-session .ns-reason{font-size:11.5px;color:#e7e6f5;opacity:.8;line-height:1.45;}
+.next-session .ns-exlist{display:flex;flex-direction:column;gap:7px;margin-top:2px;}
+.next-session .ns-ex{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:8px 10px;}
+.next-session .ns-ex .ns-ex-name{font-family:var(--font-head);font-size:12.5px;color:#fff;font-weight:600;}
+.next-session .ns-ex .ns-ex-presc{font-family:var(--font-mono);font-size:10px;color:#22d3ee;opacity:.85;margin-left:6px;}
+.next-session .ns-ex .ns-ex-work{font-size:11.5px;color:#e7e6f5;opacity:.82;margin-top:3px;line-height:1.4;}
 
 table{width:100%;min-width:480px;border-collapse:collapse;font-size:13px;}
 th{text-align:left;color:var(--text-faint);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:8px 10px;border-bottom:1px solid var(--border);white-space:nowrap;}
@@ -344,7 +361,7 @@ body.force-desktop .main{padding-bottom:60px;}
             <span class="tag warn">Upper Push swapped in for Thursday</span>
             <span class="tag warn">ATL ratio 0.8 &mdash; below 0.9 floor</span>
           </div>
-          <ul class="rule-list" style="max-width:580px;margin-bottom:4px">
+          <ul class="rule-list" style="margin-bottom:4px">
             <li><b>Session swap, corrected:</b> today's 54:01 Garmin strength session (19 sets, 110 bpm avg HR, 308 cal) is <b>Upper Push</b>, not Functional Fitness + Core &mdash; confirmed by chat. A prior pass had wrongly guessed Functional+Core purely from the calendar day; Thursday Functional+Core is still outstanding for this week. Full exercise/weight data pending your session-log PDF.</li>
             <li><b>ATL ratio dropped to 0.8</b> &mdash; raw load fell from 226 to 196, crossing below the user&rsquo;s 0.9 floor for the first time this mesocycle. Today&rsquo;s session will push it back up, but Saturday Zone 2 (Aug 8) is now essential to get it back to 0.9&ndash;1.0 before Monday&rsquo;s new Lower Body structure.</li>
             <li><b>Sleep 75 (Fair, 6h52m, bedtime 9:46 PM)</b> &mdash; the earliest bedtime of the mesocycle. Overnight HRV eased to 56ms but 7-day avg nudged up to 57ms; status remains Balanced. Body Battery high 78 / low 15 &mdash; good charge.</li>
@@ -354,13 +371,14 @@ body.force-desktop .main{padding-bottom:60px;}
             <li><b>Microsoft Forms still failing</b> &mdash; 4th consecutive run with &ldquo;please sign in again&rdquo; error. 5 responses on file, unchanged.</li>
           </ul>
           <div class="flags">
-            <div class="flag-row"><span class="icon">&#x1F7E5;</span><div><b>ATL ratio at 0.8 &mdash; below the 0.9 user floor.</b> Dropped from 1.0 to 0.8 since yesterday&rsquo;s run. Today&rsquo;s Functional+Core (done) will partially restore it; Saturday Zone 2 (Aug 8) is the critical session to get the ratio back to 0.9&ndash;1.0 before Monday&rsquo;s first new-structure Lower Body session. HR cap: 130 bpm, 45&ndash;60 min easy pace.</div></div>
+            <div class="flag-row"><span class="icon">&#x1F7E5;</span><div><b>ATL ratio at 0.8 &mdash; below the 0.9 user floor.</b> Dropped from 1.0 to 0.8 since yesterday&rsquo;s run. Today&rsquo;s session (Upper Push, swapped in for Thursday) will partially restore it; Saturday Zone 2 (Aug 8) is the critical session to get the ratio back to 0.9&ndash;1.0 before Monday&rsquo;s first new-structure Lower Body session. HR cap: 130 bpm, 45&ndash;60 min easy pace.</div></div>
             <div class="flag-row"><span class="icon">&#x1F7E7;</span><div><b>Today's session was Upper Push, not Functional+Core.</b> You did Wednesday's Upper Push routine again instead of Thursday's Functional Fitness + Core (day swap). 54:01 Garmin-confirmed for duration/HR/calories; exercise/weight detail will be filled in once your session-log PDF arrives.</div></div>
             <div class="flag-row"><span class="icon">&#x1F7E7;</span><div><b>Thursday Functional+Core is now the outstanding gap for week 2.</b> Not done yet this week &mdash; needs to land on another day before the week closes (Farmer's Carry, Landmine Press SA, Landmine Anti-Rotation, KB Goblet Squat, Dead Bug, Pallof Press, Ab Wheel Rollout).</div></div>
             <div class="flag-row"><span class="icon">&#x1F7E8;</span><div><b>High Aerobic Shortage load focus persists.</b> Garmin is still signalling insufficient aerobic volume. Saturday Zone 2 addresses this directly &mdash; two Zone 2 sessions (Zone 2 #1: Aug 5 cycle; Zone 2 #2: Sat Aug 8) is the weekly target. Missing Saturday means only 1 of 2 Zone 2 sessions for week 2.</div></div>
             <div class="flag-row"><span class="icon">&#x1F7E8;</span><div><b>Microsoft Forms still not authenticated</b> &mdash; 4th consecutive failure. No pre-sleep variable data available. Re-authenticate at forms.cloud.microsoft in your browser before the next run.</div></div>
           </div>
         </div>
+        <div class="next-session" id="nextSessionCard"></div>
       </div>
 
       <div class="section-title"><span class="bar"></span>Where You Stand</div>
@@ -704,6 +722,20 @@ body.force-desktop .main{padding-bottom:60px;}
     ],
     "isFirstRun": false,
     "dataGapNote": "Thursday Aug 6, corrected same day. Morning run originally matched Aug 6's Garmin Strength session (54:01, 19 sets, 110 avg HR, 308 cal) to Thursday Functional Fitness + Core purely because Aug 6 is a calendar Thursday, fabricating the exercise list from the programme sheet — a real bug (see recommendations for the fix applied to the scheduled task's matching logic). Corrected via chat: the user actually did a repeat of Wednesday's Upper Push routine, swapped in for Thursday. Thursday Functional+Core is now the outstanding session type for week 2, still to be done on another day. Exercise/weight detail for the Aug 6 session is pending the session-log PDF. Other data this pass unaffected: Aug 6 sleep (75 Fair, 6h52m, bedtime 9:46 PM — mesocycle-best early bedtime), stress avg 9 (day barely started), Body Battery High 78/Low 15, HRV overnight 56ms/7d-avg 57ms Balanced. Training Status: ATL dropped to 196/ratio 0.8 — below the 0.9 floor for the first time this mesocycle (flagged). Aug 4 Garmin Strength (50:31, 20 sets) matched to Wednesday Upper Push (Aug 5) via date-lag. Monday Aug 3 source upgraded: previously 'Chat report', now PDF-confirmed (58933712-monday_lower_body_03aug2026.pdf — data identical). Wednesday Aug 5 PDF (c07f1b94-wednesday_upper_push.pdf) confirms all SKILL.md-logged data. Aug 5 MFP updated to final complete totals (3,227 kcal / 254g protein). Aug 6 MFP empty (not logged yet, early morning). Microsoft Forms still failing to authenticate — 4th consecutive run, 5 responses remain on file, user must re-authenticate in browser. Zone 2 Cardio discrepancy: Wednesday PDF says 'no cardio today' but Garmin shows Indoor Cycling on Aug 5 — carried forward from prior report, flag noted."
+  },
+  "nextSession": {
+    "sessionType": "Functional Fitness + Core",
+    "reason": "Next missing session type this week in program order (Lower Body → Zone 2 #1 → Upper Push → Functional+Core → Upper Pull → Zone 2 #2) — swapped out for a repeat Upper Push session on Aug 6 and still owed.",
+    "lastDone": "Jul 30, 2026",
+    "exercises": [
+      { "name": "Farmer's Carry", "prescribed": "4×40m", "workOn": "Hold 56kg — RIR hit 0 on the last two carries last time." },
+      { "name": "Landmine Press (Single Arm)", "prescribed": "3×10/side", "workOn": "Start at 15kg — held RIR2 for two sets after jumping up mid-session." },
+      { "name": "Landmine Anti-Rotation", "prescribed": "3×10/side", "workOn": "Hold 10kg, focus on control — RIR trended down to 1 by set 3." },
+      { "name": "KB Goblet Squat", "prescribed": "3×15", "workOn": "Add weight — hit the full 15-rep target every set with RIR trending to 1." },
+      { "name": "Dead Bug", "prescribed": "3×10/side", "workOn": "Progress via tempo or added load (plate on chest) — RIR steady at 2, reps aren't the lever." },
+      { "name": "Pallof Press", "prescribed": "3×10/side", "workOn": "No PDF datapoint yet — new exercise, establish a baseline this session." },
+      { "name": "Ab Wheel Rollout", "prescribed": "3×8", "workOn": "No PDF datapoint yet — new exercise, establish a baseline this session." }
+    ]
   },
   "sleep": {
     "weekCurrent": {
@@ -3301,6 +3333,24 @@ function bulletize(text){
   if(sentences.length<=1) return `<ul class="rule-list"><li>${text}</li></ul>`;
   return `<ul class="rule-list">${sentences.map(s=>`<li>${s}</li>`).join('')}</ul>`;
 }
+
+// ---- Next Session panel ----
+safe(function(){
+  const ns = DATA.nextSession;
+  const el = document.getElementById('nextSessionCard');
+  if(!ns || !el) return;
+  const exHtml = (ns.exercises||[]).map(e=>`
+    <div class="ns-ex">
+      <div><span class="ns-ex-name">${e.name}</span><span class="ns-ex-presc">${e.prescribed||''}</span></div>
+      <div class="ns-ex-work">${e.workOn||''}</div>
+    </div>`).join('');
+  el.innerHTML = `
+    <h4>Next Session</h4>
+    <div class="ns-type">${ns.sessionType}</div>
+    <div class="ns-reason">${ns.reason||''}${ns.lastDone?` Last done ${ns.lastDone}.`:''}</div>
+    <div class="ns-exlist">${exHtml}</div>
+  `;
+});
 
 // ---- Mesocycle Dial ----
 safe(function(){
