@@ -479,14 +479,15 @@ body.force-desktop .main{padding-bottom:60px;}
 <!-- SLEEP -->
     <div class="page" id="page-sleep">
       <div class="topbar"><div><h1>Sleep Trend</h1><p class="sub">Two-week window · scores, duration vs need, and stress overlay</p></div></div>
-      <div class="grid g4" style="margin-bottom:20px">
-        <div class="card"><h4>Avg Score (this wk)</h4><div class="kpi-val" style="color:var(--amber)">64</div><div class="kpi-sub">Fair · prior wk 67</div></div>
-        <div class="card"><h4>Avg Duration</h4><div class="kpi-val">5h40m</div><div class="kpi-sub">need avg 8h30</div></div>
-        <div class="card"><h4>Avg Bedtime</h4><div class="kpi-val" style="font-size:22px">10:54 PM</div><div class="kpi-sub">prior wk 10:54 PM</div></div>
+      <div class="grid g4" style="margin-bottom:12px">
+        <div class="card"><h4>Avg Score (this wk)</h4><div class="kpi-val" style="color:var(--amber)">71</div><div class="kpi-sub">Fair · prior wk 71</div></div>
+        <div class="card"><h4>Avg Duration</h4><div class="kpi-val">6h13m</div><div class="kpi-sub">need avg 8h13</div></div>
+        <div class="card"><h4>Avg Bedtime</h4><div class="kpi-val" style="font-size:22px">10:25 PM</div><div class="kpi-sub">prior wk 10:26 PM</div></div>
         <div class="card"><h4>Nights w/ no data</h4><div class="kpi-val" style="color:var(--bad)">1</div><div class="kpi-sub">Aug 2 (7d window)</div></div>
       </div>
+      <div class="grid g4" style="margin-bottom:20px" id="lastNightTiles"></div>
       <div class="card" style="margin-bottom:20px">
-        <h4>Sleep Score & Duration — Jul 28 to Aug 3</h4>
+        <h4>Sleep Score & Duration — Aug 1 to Aug 7</h4>
         <div class="chart-box tall"><canvas id="sleepChart"></canvas></div>
       </div>
       <div class="card">
@@ -917,6 +918,30 @@ body.force-desktop .main{padding-bottom:60px;}
         }
       ],
       "note": "Aug 6 scored 75 (Fair, 6h52m) \u2014 the earliest bedtime of the mesocycle (9:46 PM), which likely explains the jump. Aug 2 remains the one permanent no-data gap."
+    },
+    "lastNight": {
+      "date": "Aug 7",
+      "score": 73,
+      "quality": "Fair",
+      "duration": "6h 20m",
+      "bedtime": "10:13 PM",
+      "wake": "4:47 AM",
+      "stages": {
+        "deepMin": 123,
+        "lightMin": 207,
+        "remMin": 50,
+        "awakeMin": 11,
+        "restlessMoments": 36
+      },
+      "hrv": {
+        "overnight": 55,
+        "sevenDayAvg": 57,
+        "status": "Balanced"
+      },
+      "bodyBatteryChange": 72,
+      "overnightHR": 61,
+      "restingHR": 53,
+      "source": "Garmin sleep detail page, Aug 7 1-Day view (Sleep Timeline Metrics + Sleep Score Factors)"
     }
   },
   "stress": {
@@ -3823,6 +3848,33 @@ safe(function(){
     html += `<ul class="rule-list" style="margin-top:10px"><li>You logged every set, every rep, every RIR on Wednesday — no guessing, no rounding up. That's the standard.</li><li>Nobody's grading how hard the session felt; they're grading whether you wrote down the truth. Do that every session and the plan can actually work for you.</li></ul>`;
   }
   document.getElementById('winsCardBody').innerHTML = html;
+});
+
+// ---- Sleep: last night detail tiles (HRV, stages, body battery, readiness) ----
+safe(function(){
+  const n = DATA.sleep.lastNight;
+  const wrap = document.getElementById('lastNightTiles');
+  if(!n || !wrap) return;
+  const mins = m => (m>=60 ? Math.floor(m/60)+'h'+(m%60?(m%60)+'m':'') : m+'m');
+  const totalStageMin = n.stages.deepMin + n.stages.lightMin + n.stages.remMin;
+  const pct = m => Math.round(m/totalStageMin*100);
+  let readiness = { label:'Prioritize recovery', color:'var(--bad)' };
+  if(n.score>=80) readiness = { label:'Primed', color:'var(--good)' };
+  else if(n.score>=65) readiness = { label:'Good to train', color:'var(--good)' };
+  else if(n.score>=50) readiness = { label:'Train with caution', color:'var(--amber)' };
+  wrap.innerHTML = `
+    <div class="card"><h4>Last Night's HRV</h4><div class="kpi-val" style="color:var(--teal)">${n.hrv.overnight}ms</div><div class="kpi-sub">7d avg ${n.hrv.sevenDayAvg}ms · <span class="tag good">${n.hrv.status}</span></div></div>
+    <div class="card"><h4>Sleep Stages</h4>
+      <div style="display:flex;height:8px;border-radius:5px;overflow:hidden;margin:8px 0 6px">
+        <div style="width:${pct(n.stages.lightMin)}%;background:var(--violet)" title="Light"></div>
+        <div style="width:${pct(n.stages.deepMin)}%;background:#4c3d99" title="Deep"></div>
+        <div style="width:${pct(n.stages.remMin)}%;background:var(--coral)" title="REM"></div>
+      </div>
+      <div class="kpi-sub">Light ${mins(n.stages.lightMin)} · Deep ${mins(n.stages.deepMin)} · REM ${mins(n.stages.remMin)}</div>
+    </div>
+    <div class="card"><h4>Body Battery, Overnight</h4><div class="kpi-val" style="color:var(--amber)">+${n.bodyBatteryChange}</div><div class="kpi-sub">charge gained while asleep</div></div>
+    <div class="card"><h4>Readiness</h4><div class="kpi-val" style="color:${readiness.color};font-size:22px">${readiness.label}</div><div class="kpi-sub">from sleep score ${n.score} · ${n.quality}</div></div>
+  `;
 });
 
 // ---- Sleep chart ----
