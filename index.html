@@ -749,7 +749,7 @@ body.force-desktop .main{padding-bottom:60px;}
    8
   ],
   "isFirstRun": false,
-  "dataGapNote": "Saturday 22 Aug, week 4 day 5. This run produced no new measurements at all, and there is a single cause: the Claude-in-Chrome browser connection was unavailable for the whole run. Every live source on this dashboard goes through Chrome — Garmin Connect, MyFitnessPal and the Pre-Sleep Variables Forms page — so all three were unreachable together. This is a tooling outage on the reporting side, not a watch problem and not a change in anything the numbers describe. Retried and confirmed: no browser was connected. No session-log PDF arrived in the uploads folder either, and no chat message was sent (this is an unattended scheduled run), so the four unconfirmed strength sessions (Aug 11, 17, 18, 19) stay unconfirmed and the Progressive Overload Log stays frozen at Aug 8 — now fourteen days. Everything on this page is therefore carried forward unchanged from the Aug 21 build, and it is labelled as carried rather than measured wherever that matters. Two deliberate choices worth knowing about. First, the 7-day sleep window was NOT rolled forward to Aug 16–22: rolling it would have dropped Aug 15's score of 69 out of the average and replaced it with a night nobody read, moving the headline number for no real reason. It is held at Aug 15–21 and labelled as held. Second, no nutrition row was appended for Aug 22 — writing a zero would assert a fact that was never checked, so the table simply ends at Aug 21. The Acute:Chronic history does get an Aug 22 entry, flagged measured:false, so the run is on the record without pretending a reading was taken. What did work: the GitHub Pages deploy. github.com is reachable from the sandbox, the git-push route found on Aug 21 still works, and the live site was republished this morning. One genuine training fact survives the outage without needing any data: today is Saturday, the programme prescribes Zone 2 Cardio, and nothing aerobic has been logged since Aug 5 — seventeen days. That session remains the single highest-leverage thing available and it is what today is for."
+  "dataGapNote": "Saturday 22 Aug, week 4 day 5. This run produced no new measurements at all, and there is a single cause: the Claude-in-Chrome browser connection was unavailable for the whole run. Every live source on this dashboard goes through Chrome — Garmin Connect, MyFitnessPal and the Pre-Sleep Variables Forms page — so all three were unreachable together. This is a tooling outage on the reporting side, not a watch problem and not a change in anything the numbers describe. Retried and confirmed: no browser was connected. No session-log PDF arrived in the uploads folder either, and no chat message was sent (this is an unattended scheduled run), so the four unconfirmed strength sessions (Aug 11, 17, 18, 19) stay unconfirmed and the Progressive Overload Log stays frozen at Aug 8 — now fourteen days. Everything on this page is therefore carried forward unchanged from the Aug 21 build, and it is labelled as carried rather than measured wherever that matters. Two deliberate choices worth knowing about. First, the 7-day sleep window was NOT rolled forward to Aug 16–22: rolling it would have dropped Aug 15's score of 69 out of the average and replaced it with a night nobody read, moving the headline number for no real reason. It is held at Aug 15–21 and labelled as held. Second, no nutrition row was appended for Aug 22 — writing a zero would assert a fact that was never checked, so the table simply ends at Aug 21. The Acute:Chronic history does get an Aug 22 entry, flagged measured:false, so the run is on the record without pretending a reading was taken. What did work: the GitHub Pages deploy. github.com is reachable from the sandbox, the git-push route found on Aug 21 still works, and the live site was republished this morning. One genuine training fact survives the outage without needing any data: today is Saturday, the programme prescribes Zone 2 Cardio, and nothing aerobic has been logged since Aug 5 — seventeen days. That session remains the single highest-leverage thing available and it is what today is for. Deploy verified after the push: remote main is now commit 5f30c442… with index.html at blob 54a46bc0…, 509,990 bytes — confirmed byte-identical to this file by re-cloning the repository (api.github.com is outside the sandbox’s network allowlist, so a fresh clone is the equivalent check)."
  },
  "nextSession": {
   "sessionType": "Zone 2 Cardio — and for once the programme and the data agree completely",
@@ -1100,8 +1100,8 @@ body.force-desktop .main{padding-bottom:60px;}
     "high": "1h 36min"
    }
   ],
-  "avg": 46,
-  "range": "Aug 14 - Aug 20",
+  "avg": 45,
+  "range": "44-50",
   "note": "Carried forward unchanged from Aug 21 — no stress data could be read this run because Chrome was unavailable, so Garmin Connect could not be reached. The figures below (45 average, 44–50 range) are computed from Aug 15–19 and are now three days old. They were a genuine improvement when measured; they are simply no longer current. Stress has settled into a stable mid-40s band (46 avg for Aug 14–20, low 44 / high 52) after the 50–55 cluster of Aug 12–15. Aug 17 finalised at 44 on re-sync — last run read it as 14, which was a partial-day artefact, so treat that earlier figure as void. Rest time is notably better on the two early-bedtime nights: 6h3min (Aug 17) and 6h33min (Aug 18) against 2h45min–4h30min on the rest. Aug 19 ticked back up to 46 with only 4h30min rest. No Aug 20 data — device sync pending."
  },
  "bodyBattery": {
@@ -5649,10 +5649,13 @@ safe(function(){
   const list = document.getElementById('recsList');
   let html = '';
   DATA.recommendations.forEach(r=>{
-    const cls = r.status==='adhered'?'adhered':r.status==='partial'?'partial':r.status==='not-adhered'?'not-adhered':'new';
+    const cls = r.status==='adhered'?'adhered':r.status==='partial'?'partial':r.status==='not-adhered'?'not-adhered':(r.status==='closed'||r.status==='unconfirmed')?'partial':'new';
     const tag = r.status==='new' ? '<span class="tag violet">New</span>' :
                 r.status==='adhered' ? '<span class="tag good">Adhered</span>' :
-                r.status==='partial' ? '<span class="tag warn">Partial</span>' : '<span class="tag bad">Not adhered</span>';
+                r.status==='partial' ? '<span class="tag warn">Partial</span>' :
+                r.status==='closed' ? '<span class="tag">Closed</span>' :
+                r.status==='unconfirmed' ? '<span class="tag warn">Unconfirmed</span>' :
+                r.status==='not-adhered' ? '<span class="tag bad">Not adhered</span>' : '<span class="tag">Logged</span>';
     html += `<div class="rec-card ${cls}"><div class="rec-top"><div class="rec-text">${r.text}</div>${tag}</div><div class="rec-meta">Given ${r.dateGiven}${r.reason?(' · '+r.reason):''}</div></div>`;
   });
   list.innerHTML = html;
